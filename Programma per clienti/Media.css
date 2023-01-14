@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'cinzel';
+    src: url(Cinzel-Family/Cinzel-Regular.ttf);
+}
+@media screen and (max-width: 60rem) {
+    .image-grid {
+    --num-cols: 4;
+    --row-height: 15rem
+    }
+}

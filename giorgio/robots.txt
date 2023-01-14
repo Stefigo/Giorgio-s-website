@@ -1,0 +1,29 @@
+# Group 1
+User-agent: *
+Disallow: / 
+
+# Group 2
+User-agent: Googlebot
+Disallow: / 
+User-agent: AdsBot-Google
+Disallow: / 
+User-agent: Slurp
+Disallow: / 
+User-agent: DuckDuckBot
+Disallow: / 
+User-agent: YandexBot
+Disallow: / 
+User-agent: facebot
+Disallow: / 
+User-agent: Baiduspider
+Disallow: / 
+User-agent: ia_archiver
+Disallow: / 
+User-agent: Bingbot
+Disallow: / 
+User-agent: Googlebot-Image
+Disallow: / 
+User-agent: googlebot-mobile
+Disallow: / 
+User-agent: MSNBot
+Disallow: / 

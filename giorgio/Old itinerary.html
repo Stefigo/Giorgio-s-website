@@ -1,0 +1,1475 @@
+"<!DOCTYPE html>
+<html>
+<head>
+	<meta content='width=device-width' initial-scale=1' name='viewport' 
+		content='text/html' charset='UTF-8' X-Content-Type-Options='nosniff' http-equiv='Content-Type' />
+	<link rel='icon' type='image/x-icon' href='img/favicon.ico' />
+	<title>" & Itinerary.Title & "</title>
+</head>
+<style>
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html{
+	font-family: 'Lato', Sans-serif;
+	font-size: 10px;
+	scroll-behavior: smooth;
+}
+img{
+	width: 100%;
+}
+body{
+	width: 100%;
+}
+
+#header{
+	width:100%;
+	background: white;
+}
+	#header-container{
+		display: flex;
+		flex-direction: row;
+		font-size: 1.5rem;
+		padding: .7rem;
+		max-width: 130rem;
+		margin: auto;
+		width: 100%;
+		font-size: 1.2rem;
+	}
+	.header-left{
+		width: 100%;
+		padding: 1rem;
+		text-align: left;
+	}
+	.header-right{
+		width: 100%;
+		padding: 1rem;
+		text-align: right;
+	}
+#footer{
+	width:100%;
+	background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+	#footer-container{
+		display: flex;
+		flex-direction: column;
+		font-size: 1.5rem;
+		padding: .7rem;
+		color: #fff;
+		max-width: 130rem;
+		margin: auto;
+		width: 100%;
+		text-align: center;
+		font-size: 1.2rem;
+	}
+	.footer-item{
+		width: 100%;
+		padding: 1rem;
+	}
+
+#home-background{
+	width: 100%;
+	background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+#home{
+	width:100%;
+	height: 70rem;
+	max-width: 130rem;
+	display: flex;
+	justify-content: center;
+	padding: 0 1.5rem;
+	margin: auto;
+}
+	#box1{
+		flex: 1;
+		max-width: 100rem;
+		margin: auto;
+	}
+		#title{
+			font-size: 8rem;
+			margin-top: 1;
+			margin-bottom: 0;
+			text-transform: uppercase;
+			color: white;
+		}
+		#subtitle{
+			color: white;
+			padding: 1rem;
+		}
+	#box2{
+		flex: 2;
+		padding: 2rem;
+		font-weight: lighter;
+		max-width: 100rem;
+		margin: auto;
+	}
+	.line-title{
+		border-bottom: 2px solid white;
+		display: block;
+	}
+#menu{
+	position: -webkit-sticky;
+	position: sticky;
+	top: -3rem;
+	display: flex;
+	justify-content: center;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	z-index: 9999;
+}
+#menu .button{
+  display: inline-block;
+  height: 6rem;
+  width: 6rem;
+  display: flex;
+  margin: 0 .5rem;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5rem;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  align-items: center;
+}
+#menu .button:hover{
+  width: 14rem;
+}
+#menu .button .icon{
+  display: inline-block;
+  height: 6rem;
+  width: 6rem;
+  text-align: center;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  line-height: 6rem;
+  transition: all 0.3s ease-out;
+  margin-left: 1.5rem;
+}
+#menu .button:hover .icon{
+  margin-left: 0rem;
+}
+#menu .button:nth-child(1):hover .icon{
+  background: #4267B2;
+}
+#menu .button:nth-child(2):hover .icon{
+  background: orange;
+}
+#menu .button:nth-child(3):hover .icon{
+  background: #4facfe;
+}
+#menu .button:nth-child(4):hover .icon{
+  background: gray;
+}
+#menu .button:nth-child(5):hover .icon{
+  background: rgb(144,238,144, 1);
+}
+#menu .button .menu-icon{
+	width: 3rem;
+	transition: all 0.3s ease-out;
+}
+#menu .button:nth-child(1) .menu-icon{
+	fill: #4267B2;
+}
+#menu .button:nth-child(2) .menu-icon{
+	fill: orange;
+}
+#menu .button:nth-child(3) .menu-icon{
+	fill: #4facfe;
+}
+#menu .button:nth-child(4) .menu-icon{
+	fill: gray;
+}
+#menu .button:nth-child(5) .menu-icon{
+	fill: rgb(144,238,144, 1);
+}
+#menu .button:hover .menu-icon{
+	fill: #fff;
+}
+#menu .button span{
+	font-size: 2rem;
+	font-weight: 600;
+	line-height: 5rem;
+	margin-left: 2rem;
+	transition: all 0.3s ease-out;
+}
+#menu .button:hover span{
+	margin-left: 1rem;
+}
+#menu .button:nth-child(1) span{
+  color: #4267B2;
+}
+#menu .button:nth-child(2) span{
+  color: orange;
+}
+#menu .button:nth-child(3) span{
+  color: #4facfe;
+}
+#menu .button:nth-child(4) span{
+  color: gray;
+}
+#menu .button:nth-child(5) span{
+  color: rgb(144,238,144);
+}
+#back{
+	position: fixed;
+	bottom: 40px;
+	right: 50px;
+}
+#back .button{
+  height: 6rem;
+  width: 6rem;
+  margin: 0 .5rem;
+  background: #fff;
+  border-radius: 5rem;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+  align-items: center;
+}
+#back .button:hover{
+}
+#back .button .icon{
+  height: 6rem;
+  width: 6rem;
+  text-align: center;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  line-height: 6rem;
+  fill: #4facfe;
+  transition: all 0.3s ease-out;
+}
+#back .button:nth-child(1):hover .icon{
+  background: #4facfe;
+}
+#back .button .menu-icon{
+	width: 3rem;
+	transition: all 0.3s ease-out;
+}
+#back .button:hover .menu-icon{
+	fill: #fff;
+}
+.line{
+	border-bottom: 2px solid lightgray;
+	display: block;
+}
+container{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 0 1.5rem;
+}
+.blog-part{
+	padding: 2rem;
+	max-width: 100rem;
+}
+.blog-part > *{
+	transition: .25s;
+}
+.blog-part:hover > *{
+	transform: translateX(2rem);
+	
+	box-shadow: 0rem 2rem 2rem rgba(0,0,0,0.1);
+}
+.blog-post{
+	width: 100%;
+	max-width: 100rem;
+	min-width: 100rem;
+	padding: 2rem;
+	background-color: #fff;
+	box-shadow: 0rem 1rem 1rem rgba(0,0,0,0.1);
+	display: flex;
+	align-items: center;
+	border-radius: .8rem;
+}
+.blog-post__info{
+	width: 100%
+}
+.blog-post__img{
+	mid-width: 35rem;
+	max-width: 35rem;
+	transform: translateX(-5rem);
+	position: relative;
+	box-shadow: 0rem 1rem 1rem rgba(0,0,0,0.1);
+	border-radius: .8rem;
+}
+.blog-post__img img{
+	width: 100%
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	border-radius: .8rem;
+}
+.image_overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: .8rem;
+	opacity: 1;
+	transition: opacity 0.25s;
+}
+.image_overlay_accommodation{
+	background: rgb(66,103,178, .4);
+}
+.image_overlay_itinerary{
+	background: rgb(255,165,0, .2);
+}
+.image_overlay_rental{
+	background: rgb(79,172,254, .4);
+}
+.image_overlay > * {
+	transform: translateX(0rem);
+	transition: transform 0.25s;
+}
+.blog-post:hover .image_overlay{
+	opacity:0;
+}
+.blog-post:hover .image_overlay > * {
+	transform: translateX(-10rem);
+}
+.image_date{
+	font-size: 9rem;
+	font-weight: bold;
+	color: white;
+}
+.image_month{
+	font-size: 3rem;
+	font-weight: bold;
+	color: white;
+}
+.blog-post__date span{
+	display: block;
+	color: rgba(0,0,0,.5);
+	font-size: 1.8rem;
+	font-weight: 600;
+	margin: 0.5rem 0;
+}
+.blog-post__title{
+	font-size: 2.5rem;
+	margin: 1.5rem 0 2rem;
+	text-transform: uppercase;
+	color: #4facfe;
+}
+.blog-post__text{
+	margin-bottom: 3rem;
+	font-size: 1.6rem;
+	color: rgba(0,0,0,.5);
+	line-height: 200%;
+}
+.div-icon-svg{
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 2rem;
+}
+.icon-svg{
+	fill: #4facfe;
+	transition: 0.7s;
+}
+.icon-svg:hover{
+	fill: #00f2fe;
+}	
+.fill-accommodation{
+fill: rgb(66,103,178, 1);
+}
+.fill-rental{
+fill: rgb(79,172,254, 1);
+}
+.fill-itinerary{
+fill: rgb(255,165,0, 1);
+}
+.desc{
+	width: 100%;
+	width: 100rem;
+	text-align: center;
+	margin: auto;
+	padding-top: 6rem;
+    margin-top: -6rem;
+
+}
+	.desc-title{
+		font-size: 3rem;
+		margin: 3rem;
+		text-transform: uppercase;
+		color: #4facfe;
+	}
+	.desc-subtitle{
+		margin-top: 4rem;
+		color: rgba(0,0,0,.5);
+		font-size: 1.8rem;
+		font-weight: 600;
+	}
+	.desc-regular{
+		margin-top: 2.5rem;
+		color: rgba(0,0,0,.5);
+		font-size: 1.5rem;
+		line-height: 200%;
+	}
+	.desc-italic{
+		color: rgba(0,0,0,.5);
+		font-size: 1.5rem;
+		line-height: 200%;
+		font-style: italic;
+		margin-top: 2rem;
+	}
+		.desc-terms{
+			color: rgba(0,0,0,.5);
+			line-height: 200%;
+			text-align: justify;
+		}
+		.desc-terms h3{
+			text-transform: uppercase;
+			margin-top: 4rem;
+			font-size: 1.8rem;
+			font-weight: 600;
+		}
+		.desc-terms p{
+			margin-top: 1rem;
+			color: rgba(0,0,0,.5);
+			font-size: 1.5rem;
+			line-height: 200%;
+		}
+		.desc-terms ul{
+			margin-top: 1rem;
+			color: rgba(0,0,0,.5);
+			font-size: 1.5rem;
+			line-height: 150%;
+			margin-left: 2.5rem;
+		}
+		.desc-terms a{
+			color: #4facfe;
+			transition: 0.25s;
+		}
+		.desc-terms a:hover{
+			color: #00f2fe;
+		}
+	.img1-container{
+		width: 100%;
+		margin: auto;
+		margin-top: 2.5rem;
+		display: flex;
+	}
+		.img1{
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 30rem;
+			flex: 1;
+			transition: 0.7s;
+		}
+		.img1:hover{
+			flex: 2;
+		}
+.color-accommodation{
+	color: #4267B2;
+}
+.color-itinerary{
+	color: orange;
+}
+.color-transfer{
+	color: #4facfe;
+}
+.color-more{
+	color: gray;
+}
+.color-money{
+	color: rgb(144,238,144);
+}
+.separator{
+	width: 100%;
+	height: 8rem;
+	display: flex;
+	justify-content: center;
+}
+	#icon-accommodation{
+		fill: rgb(66,103,178, .3);
+	}
+	#icon-itinerary{
+		fill: rgb(255,165,0, .2);
+	}
+	#icon-transfer{
+		fill: rgb(79,172,254, .3);
+	}
+	#icon-more{
+		fill: rgb(128,128,128, .3);
+	}
+	#icon-terms{
+		fill: rgb(144,238,144, .5);
+	}
+
+.transfer-container{
+	width:100%;
+	display: flex;
+	justify-content: center;
+	padding: 2rem;
+}
+	.transfer-box1{
+		width:50%;
+		text-align: center;
+	}
+	.transfer-box2{
+		width: 50%;
+	}
+	.transfer-box2 img{
+		max-width: 30rem;
+        border-radius: .8rem;
+	}
+	.butler-img{
+		width: 40%;
+	}
+	.butler-img-box{
+	}
+
+@media screen and (max-width: 1100px) {
+	#home{
+	flex-direction:column;
+	height:100%;
+	}
+	#box1{
+		margin: 0;
+	}
+	#box2{
+		margin: 0;
+	}
+	.img1:hover{
+			flex: 4;
+		}
+	.desc{
+		width: 80rem;
+	}
+	.blog-title{
+		max-width: 80rem;
+		min-width: 80rem;
+	}
+	.butler-img{
+		width: 50%;
+	}
+	#title{
+			font-size: 5.5rem;
+			padding-top: 5rem;
+			padding-bottom: 1.5rem;
+		}
+	.blog-post{
+		max-width: 80rem;
+		min-width: 80rem;
+	}
+	
+	.blog-post__img{
+		min-width: 30rem;
+		max-width: 30rem;
+	}	
+}
+
+@media screen and (max-width: 850px) {
+	.desc{
+		width: 65rem;
+	}
+	.blog-title{
+		max-width: 65rem;
+		min-width: 65rem;
+		padding: 3rem;
+	}
+	.blog-post{
+		max-width: 65rem;
+		min-width: 65rem;
+		padding: 3rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.desc{
+		width: 50rem;
+	}
+	.container{
+		padding: 0 0.5rem;
+	}
+	.blog-title{
+		max-width: 50rem;
+		min-width: 50rem;
+		padding:2.5rem;
+	}
+	.blog-post{
+		max-width: 50rem;
+		min-width: 50rem;
+		padding:2.5rem;
+		flex-direction: column;
+	}
+	.blog-post__img{
+		min-width: 100%;
+		max-width: 100%;
+		transform: translate(0,-5rem);
+	}
+	.desc-title{
+		font-size: 2rem;
+		margin: 2rem;
+	}
+	.img1{
+		height: 25rem;
+		}
+	.transfer-container{
+		flex-direction: column-reverse;
+		align-imtes: center;
+	}
+		.transfer-box1{
+			width: 100%
+		}
+		.desc-subtitle{
+			margin-top: 2rem;
+		}
+		.transfer-box2{
+			margin-top: 1rem;
+			width: 100%
+		}
+}
+
+@media screen and (max-width: 500px) {
+	.desc{
+		width: 90%;
+		padding-top: 8rem;
+		margin-top: -8rem;
+	}
+	#menu .button:hover{
+		 width: 6rem;
+		}
+	#menu .button:hover span{
+		margin-left: 2rem;
+	}
+	#menu .button:hover .icon{
+		margin-left: 1.5rem;
+	}
+	.img1{
+		height: 20rem;
+		}
+		.blog-post__img{
+		transform: translate(0,-3.5rem);
+	}
+	.blog-title{
+		max-width: 35rem;
+		min-width: 35rem;
+		padding:1.5rem;
+	}
+	.blog-post{
+		max-width: 35rem;
+		min-width: 35rem;
+		padding:1.5rem;
+	}
+	#back{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+}
+
+@media screen and (max-width: 390px) {
+	.desc{
+		width: 95%;
+		
+	}
+	.blog-post__img{
+		transform: translate(0,-3rem);
+	}
+	.blog-title{
+		max-width: 95%;
+		padding:1.5rem;
+	}
+	.blog-post{
+		max-width: 95%;
+		padding:1.5rem;
+	}
+}
+@media screen and (max-width: 300px) {
+	#menu .button .icon{
+	  margin-left: 0.5rem;
+	}
+}
+
+</style>
+<body>" &
+
+
+With({
+    Accommodations:colVw_IT_Accommodation,
+
+    Rooms:colVw_IT_Room,
+
+    MyDocuments:colDocument,
+    
+    GroupEvents:colVw_IT_GroupEvent,
+    
+    CarRentals:colVw_IT_RentACar,
+        
+    AdditionalDescriptions:colAdditionalDescription,
+    
+    ItineraryEvents:colVw_IT_Event,
+                    
+    MyCellphones:Filter('[dbo].[IT_Cellphone]',Itinerary.ItineraryID=ItineraryID),
+    
+    MyBR:LookUp('[dbo].[vw_BookingReference]',Itinerary.BookingReferenceID=BookingReferenceID)
+    },
+
+
+//------------------------------------------------------------ FIRST PAGE ------------------------------------------------------------
+
+//------------------------------------------------------------ HOME ------------------------------------------------------------
+"<div id='header'>
+	<div id='header-container'>
+		<div class='header-left'>
+			<p style='font-size: 1.6rem;'>"&If(cboxIsLeonidas.Value,"<b>LEONIDAS TRAVEL</b>","")&"</p>
+		</div>
+		<div class='header-right'>
+			<p>" & If(cboxIsTravelAgent.Value, "in cooperation with</p>
+			<p font-size: 1.6rem;><b>" &  MyBR.ClientName & " - " & MyBR.ClientAgencyNickname,"") & "</b></p>
+		</div>
+	</div>
+</div>
+
+<div id='home-background'>
+    <div id='home'>
+        <div id='box1'>
+            <h1 id='title'>"& Itinerary.Title &"<h1>
+            <span class='line-title'></span>
+            <p id='subtitle'>"& Itinerary.TravelerQuantity & " pax / " & Text(Itinerary.DateArrival,"[$-en-US]mmm dd. - ") & Text(Itinerary.DateDeparture,"[$-en-US]mmm dd. yyyy") &"
+            <br>Ref# "& Itinerary.BookingReferenceID & "-v" & Itinerary.Version &"
+            <br>"& Switch(MyBR.StatusName,"Wip","Draft","Sold","Final","Cancelled","Cancelled","Rejected","Not accepted","Sample","Sample itinerary","New","Draft") & "</p>
+        </div>"&
+//------------------------------------------------------------ Map ------------------------------------------------------------
+	"<div id='box2'>" &
+"<svg xmlns='http://www.w3.org/2000/svg' version='1.2' baseProfile='tiny' viewBox='"& _MapX &" "& _MapY &" "& _MapWidth &" "& _MapHeight &"' stroke-linecap='round' stroke-linejoin='round'>"
+
+//Countries
+&Concat(cboxCountries.SelectedItems,"<path d='"& Coordinates &" Z' fill='white' stroke-width='"& _MapStroke &"' stroke='lightgray'/>")
+
+//Lines relations colMapLines
+&Concat(colMapLines,
+                "<path stroke='gray' fill='transparent' stroke-dasharray='"&Switch(LineStyle,"Solid",0,"Dashed",3,"Dotted",1.2)&"' stroke-width='" & _MapLine & 
+                "' d='M "& FromX & " " & FromY &"c "& FromCX &" "& FromCY &", "& ToCX &" "& ToCY &", "& ToX -FromX &" "& ToY - FromY &"'/>")
+                
+//Accommodation Location
+& Concat(cboxMapAccLocation.SelectedItems,"<circle cx='"& X_Coordinate &"' cy='"& Y_Coordinate &"' r='"&_MapCircle+1&"' fill='orange'/>")
+
+//Accommodation Location name
+& Concat(cboxMapAccLocation.SelectedItems, "<text x='"&X_Coordinate+_MapTextCoordinateX+1.5&"' y='"&Y_Coordinate+_MapTextCoordinateY&"' font-size='"& _MapFontSize+1 &"' fill='gray' font-weight='600'>"& Name &"</text>")
+
+//Event ItineraryLocation
+& Concat(cboxMapEventLocation.SelectedItems,"<circle cx='"& X_Coordinate &"' cy='"& Y_Coordinate &"' r='"&_MapCircle&"' fill='lightgray'/>")
+
+//Event ItineraryLocation name
+& Concat(cboxMapEventLocation.SelectedItems, "<text x='"&X_Coordinate+_MapTextCoordinateX&"' y='"&Y_Coordinate+_MapTextCoordinateY&"' font-size='"& _MapFontSize &"' fill='gray'>"& Name &"</text>")
+
+//Notes
+& Concat(colMapNotes, "<text x='"& CoordinateX &"' y='"& CoordinateY &"' font-family='sans-serif' font-size='"& _MapFontSize &"' fill='gray' >"& Name &"</text>")
+
+    & "</svg>
+    </div>
+</div>
+</div>"&
+//------------------------------------------------------------ Menu ------------------------------------------------------------
+"<div id='menu'>"&
+	If(!IsEmpty(Accommodations),
+    "<a class='button' href='#accommodation' style='text-decoration:none;'>
+		<div class='icon'>
+		
+			<svg class='menu-icon'
+			xmlns='http://www.w3.org/2000/svg'
+			width='1.5rem'
+			height='6rem'
+			viewBox='0 0 36 36'>
+			<path d='M29.2 26.72a12.07 12.07 0 0 1-6.3-22.28A13.68 13.68 0 0 0 19.49 4a14 14 0 0 0 0 28a13.82 13.82 0 0 0 10.9-5.34a11.71 11.71 0 0 1-1.19.06z'/>
+			</svg>
+		
+		</div>
+		<span>Rest</span>
+	</a>")
+	&
+    If(!IsEmpty(GroupEvents),
+	"<a class='button' href='#itinerary' style='text-decoration:none;'>
+	
+		<div class='icon'>
+			<svg class='menu-icon'
+				xmlns='http://www.w3.org/2000/svg'
+				width='3rem' 
+				height='6rem'
+				viewBox='0 0 1024 1023'>
+				<path d='M901 576q-99 99-227.5 122T449 659L278 830l88 88q18 18 18 43.5t-18 43.5t-43.5 18t-43.5-18L18 745Q0 727 0 701.5T18 658t43.5-18t43.5 18l88 88l171-171q-61-96-38.5-224.5T447 123Q551 20 687 0q59 58 115 114t120 120.5T1024 337q-20 136-123 239zM674 68q-95 23-169 97q-47 47-74 104t-31 115h545q8-22 11-34z'/>
+			</svg>
+		</div>
+		<span>Fun</span>
+	
+	</a>")&
+	With({MyVehicles:Filter(Distinct(ItineraryEvents,VehicleID),!IsBlank(Result) And Result<>9)},
+    If(IsEmpty(CarRentals) And IsEmpty(MyVehicles),"",
+	"<a class='button' href='#transfer' style='text-decoration:none;'>
+		<div class='icon'>
+			<svg class='menu-icon'
+			xmlns='http://www.w3.org/2000/svg'
+			width='3.5rem'
+			height='5rem'
+			viewBox='0 0 24 20'>
+			<path d='M20.772 10.155l-1.368-4.104A2.995 2.995 0 0 0 16.559 4H7.441a2.995 2.995 0 0 0-2.845 2.051l-1.368 4.104A2 2 0 0 0 2 12v5c0 .738.404 1.376 1 1.723V21a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2h12v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2.277A1.99 1.99 0 0 0 22 17v-5a2 2 0 0 0-1.228-1.845zM7.441 6h9.117c.431 0 .813.274.949.684L18.613 10H5.387l1.105-3.316A1 1 0 0 1 7.441 6zM5.5 16a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 5.5 16zm13 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 18.5 16z'/>
+			</svg>
+		</div>
+		<span>Move</span>
+	</a>"))&
+	If(IsEmpty(MyCellphones) And IsEmpty(AdditionalDescriptions) And !Itinerary.IsButler,"",
+	"<a class='button' href='#more' style='text-decoration:none;'>
+		<div class='icon'>
+			<svg class='menu-icon'
+			xmlns='http://www.w3.org/2000/svg'
+			width='3.5rem'
+			height='6rem'
+			viewBox='0 0 28 28'>
+			<path d='M8.75 14a2.75 2.75 0 1 1-5.5 0a2.75 2.75 0 0 1 5.5 0z'/><path d='M16.75 14a2.75 2.75 0 1 1-5.5 0a2.75 2.75 0 0 1 5.5 0z'/><path d='M22 16.75a2.75 2.75 0 1 0 0-5.5a2.75 2.75 0 0 0 0 5.5z'/>
+			</svg>
+		</div>
+		<span>More</span>
+	</a>")&
+    If(cboxIsContract.Value Or cboxIsPrice.Value,
+    "<a class='button' href='#money' style='text-decoration:none;'>
+		<div class='icon'>
+			<svg class='menu-icon'
+				xmlns='http://www.w3.org/2000/svg'
+				width='3.5rem'
+				height='6rem'
+				viewBox='0 0 640 512'>
+				<path d='M621.16 54.46C582.37 38.19 543.55 32 504.75 32c-123.17-.01-246.33 62.34-369.5 62.34c-30.89 0-61.76-3.92-92.65-13.72c-3.47-1.1-6.95-1.62-10.35-1.62C15.04 79 0 92.32 0 110.81v317.26c0 12.63 7.23 24.6 18.84 29.46C57.63 473.81 96.45 480 135.25 480c123.17 0 246.34-62.35 369.51-62.35c30.89 0 61.76 3.92 92.65 13.72c3.47 1.1 6.95 1.62 10.35 1.62c17.21 0 32.25-13.32 32.25-31.81V83.93c-.01-12.64-7.24-24.6-18.85-29.47zM48 132.22c20.12 5.04 41.12 7.57 62.72 8.93C104.84 170.54 79 192.69 48 192.69v-60.47zm0 285v-47.78c34.37 0 62.18 27.27 63.71 61.4c-22.53-1.81-43.59-6.31-63.71-13.62zM320 352c-44.19 0-80-42.99-80-96c0-53.02 35.82-96 80-96s80 42.98 80 96c0 53.03-35.83 96-80 96zm272 27.78c-17.52-4.39-35.71-6.85-54.32-8.44c5.87-26.08 27.5-45.88 54.32-49.28v57.72zm0-236.11c-30.89-3.91-54.86-29.7-55.81-61.55c19.54 2.17 38.09 6.23 55.81 12.66v48.89z'/>
+		    </svg>
+		</div>
+		<span>Terms</span>
+	</a>") & "
+</div>"
+
+&
+
+
+//------------------------------------------------------------ SUMMARY ------------------------------------------------------------
+
+                             // Accommodation
+If(!IsEmpty(Accommodations), Concat(Accommodations,
+"<container>
+    <div class='blog-part'>
+		<div class='blog-post'>
+            <div class='blog-post__img'>
+                <img src=" & LookUp('[dbo].[PictureTable]',Picture1_ID=SharepointID,Base64) & ">
+                <div class='image_overlay image_overlay_accommodation'>
+					<div class='image_date'>"& Text(DateFrom, "[$-en-US]dd") & "</div>
+					<div class='image_month'>"& Text(DateFrom, "[$-en-US]mmm") & "</div>
+				</div>
+            </div>
+			<div class='blog-post__info'>
+				<div class='blog-post__date'>
+                    <span>"  & DateDiff(DateFrom,DateTo,Days) & " nights in " & LookUp(RenameColumns(colLocation,"Location_ID","Location_ID2"),Location_ID=Location_ID2).Name & "</span>
+                </div>
+				<h3 class='blog-post__title color-accommodation'>"& 
+
+If(IsNotBuyout=true,
+
+                Name & " " & Stars & "</h3>
+                <p class='blog-post__text'>" & 
+                With({MyRoomList:Filter(RenameColumns(colVw_IT_Room,"IT_AccommodationID","IT_AccommodationID2","Name","NameRoom","ViewID","ViewRoomID","SizeSqm","SizeSqmRoom"),IT_AccommodationID=IT_AccommodationID2)},
+                Concat(MyRoomList,"   " & NameRoom & " (" & LookUp(colView,ViewRoomID=ViewID).Name & ", " & SizeSqmRoom & " sqm)", " / "))& 
+                If(IsBlank(AmenityDescription),"","<br>" & AmenityTitle) &
+                "</p>",
+
+                 TitleVilla & "</h3>
+                <p class='blog-post__text'>"& NoteRooms & If(IsBlank(AmenityDescription),"","<br>" & AmenityTitle) & "</p>") & 
+
+                "<div class='div-icon-svg'>
+                    <a href='#" & "acc" & IT_AccommodationID & "'>
+                        <svg class='icon-svg  fill-accommodation'
+                            xmlns='http://www.w3.org/2000/svg'
+                            width='4rem' 
+                            height='4rem'
+                            viewBox='0 0 24 24'>
+                            <path d='M16.939 7.939L12 12.879l-4.939-4.94l-2.122 2.122L12 17.121l7.061-7.06z'/>
+                        </svg>
+				    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>"))
+
+                             // Car rental
+
+& If(!IsEmpty(CarRentals), Concat(CarRentals,
+With({MyVehicle:LookUp(RenameColumns(colVehicle,"VehicleID","VehicleID2"),VehicleID=VehicleID2)},
+With({VehiclePictureID:MyVehicle.PictureID},
+"<container>
+    <div class='blog-part'>
+		<div class='blog-post'>
+            <div class='blog-post__img'>
+                <img src=" & LookUp('[dbo].[PictureTable]',VehiclePictureID=SharepointID,Base64) & ">
+                <div class='image_overlay image_overlay_rental'>
+					<div class='image_date'>"& Text(DateFrom, "[$-en-US]dd") & "</div>
+					<div class='image_month'>"& Text(DateFrom, "[$-en-US]mmm") & "</div>
+				</div>
+            </div>
+			<div class='blog-post__info'>
+				<div class='blog-post__date'>
+                    <span>"  & DateDiff(DateFrom,DateTo,Days) & " nights</span>
+                </div>
+				<h3 class='blog-post__title color-transfer'>Car Rental</h3>
+                <p class='blog-post__text'>"& MyVehicle.Name & "<br>
+                " & LookUp(colLocation,A_Location_ID=Location_ID).Name & " to " & LookUp(colLocation,C_Location_ID=Location_ID).Name & "</p>" & 
+
+                "<div class='div-icon-svg'>
+                <a href='#rent1'>
+					<svg class='icon-svg  fill-rental'
+						xmlns='http://www.w3.org/2000/svg'
+						width='4rem' 
+						height='4rem'
+						viewBox='0 0 24 24'>
+						<path d='M16.939 7.939L12 12.879l-4.939-4.94l-2.122 2.122L12 17.121l7.061-7.06z'/>
+					</svg>
+				</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>"))))
+
+
+                             // Group Event
+&
+If(!IsEmpty(GroupEvents), Concat(GroupEvents,
+
+"<container>
+    <div class='blog-part'>
+		<div class='blog-post'>
+            <div class='blog-post__img'>
+		        <img src=" & LookUp('[dbo].[PictureTable]',Picture1_ID=SharepointID,Base64) & ">
+                <div class='image_overlay image_overlay_itinerary'>
+					<div class='image_date'>"& Text(DateOfService, "[$-en-US]dd") & "</div>
+					<div class='image_month'>"& Text(DateOfService, "[$-en-US]mmm") & "</div>
+				</div>
+            </div>
+			<div class='blog-post__info'>
+				<div class='blog-post__date'>
+                    <span>" & LookUp(colLocation,A_Location_ID=Location_ID).Name & "</span>
+                    <span>"  & Text(DateOfService, "[$-en-US]dddd @ ") & Left(A_MeetingTime,2) &":" & Mid(A_MeetingTime,4,2) & "</span>
+                </div>
+				<h3 class='blog-post__title color-itinerary'>"&LookUp(RenameColumns(colGroupType,"GroupTypeID","GroupTypeID2"),GroupTypeID=GroupTypeID2).Name &"</h3>
+                <p class='blog-post__text'>"& Summary & "</p>" & 
+
+                "<div class='div-icon-svg'>
+                <a href='#it" & IT_GroupEventID &"'>
+					<svg class='icon-svg  fill-itinerary'
+						xmlns='http://www.w3.org/2000/svg'
+						width='4rem' 
+						height='4rem'
+						viewBox='0 0 24 24'>
+						<path d='M16.939 7.939L12 12.879l-4.939-4.94l-2.122 2.122L12 17.121l7.061-7.06z'/>
+					</svg>
+				</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>"))
+
+                             // Inclusions - Exclusions
+
+&
+If(!IsBlank(Itinerary.NoteInclusions) Or !IsEmpty(MyDocuments) Or !IsBlank(Itinerary.NoteExclusions),
+"<div class='separator'>
+</div>")
+&
+                             
+If(IsBlank(Itinerary.NoteInclusions) And IsEmpty(MyDocuments),"",
+"<div class='desc'>
+	<p class='desc-subtitle' style='margin-top: 0;'>Inclusions</p>
+	<p class='desc-regular'>" & Itinerary.NoteInclusions ) &
+If(IsEmpty(MyDocuments),"",
+"<br>Luxury quality travel documents "&
+Concat(MyDocuments,
+With({MyTraveller:LookUp(RenameColumns('[dbo].[TravellerGroup]',"TravellerGroupID","TravellerGroupID2"),TravellerGroupID=TravellerGroupID2).AttentionTo},
+    If(IsShippedTogether,"together with ",If(IsDomestic,"(shipped on destination to ","(shipped abroad to ")) & MyTraveller ),", ") & ")") &"</p>
+</div>"
+&
+
+If(IsBlank(Itinerary.NoteExclusions),"",
+"<div class='desc'>
+	<p class='desc-subtitle'>Exclusions</p>
+	<p class='desc-regular'>" & Itinerary.NoteExclusions & "</p>
+</div>")
+&
+
+//------------------------------------------------------------  ACCOMMODATION ------------------------------------------------------------
+If(!IsEmpty(Accommodations),
+"<div class='separator' id='accommodation'>
+</div>
+<div class='separator'>
+		<svg id='icon-accommodation'
+				xmlns='http://www.w3.org/2000/svg'
+				width='10rem'
+				height='10rem'
+				viewBox='0 0 36 36'>
+				<path d='M29.2 26.72a12.07 12.07 0 0 1-6.3-22.28A13.68 13.68 0 0 0 19.49 4a14 14 0 0 0 0 28a13.82 13.82 0 0 0 10.9-5.34a11.71 11.71 0 0 1-1.19.06z'/>
+		</svg>
+</div>
+
+<div class='separator'>
+</div>
+"
+&
+
+Concat(Accommodations,
+
+If(IsNotBuyout,
+                             // Accommodation by Room
+"<div class='desc' id='" & "acc" & IT_AccommodationID & "'>
+	<div class='desc-title color-accommodation'>
+		<h2>" & Name & " " & Stars & "*" & "</h2>
+	</div>
+	<span class='line'></span>
+	<div class='desc-subtitle'>
+		<h3>"& DateDiff(DateFrom,DateTo,Days) & " nights in "& LookUp(RenameColumns(colLocation,"Location_ID","Location_ID2"),Location_ID=Location_ID2).Name &"</h3>
+	</div>
+	
+	<div class='desc-regular'>
+	<p>" & Description1 & "</p>
+	
+	</div>
+	<div class='desc-italic'>
+        <p>"& If(IsBlank(NoteDistances),"","<p>Distances: " & NoteDistances) &" / Checkin: "& Left(Checkin,2) &":" & Mid(Checkin,4,2) &" - Checkout: "& Left(Checkout,2) &":" & Mid(Checkout,4,2) & If(IsBlank(Notes),"</p>"," / Notes: " & Notes & "</i></p>") & If(IsBlank(NoteFacilities),"",
+    "<p>Facilities: " & NoteFacilities & "</p>") &
+	"</div>" &
+    
+    // Amenities
+If(IsBlank(AmenityDescription),"",
+    "<div class='desc-subtitle'>
+            <h3>"& AmenityTitle &"</h3>
+        </div>
+    <div class='desc-italic'>
+		<p>"&  AmenityDescription  &"</p>
+	</div>") &
+   
+   // Rooms
+With({MyRoomList:Filter(RenameColumns(Rooms,"IT_AccommodationID","IT_AccommodationID2","Name","NameRoom","ViewID","ViewRoomID","Description","DescriptionRoom","SizeSqm","SizeSqmRoom","Balcony","BalconyRoom","Twinbed","TwinBedRoom","NoteFacilities","FacilitiesRoom","Picture1_ID","Picture1Room","Picture2_ID","Picture2Room"),IT_AccommodationID=IT_AccommodationID2)},
+Concat(MyRoomList,
+
+"<div class='desc-subtitle'>
+		<h3>"& NameRoom & If(ViewRoomID<>6, " - "& LookUp(colView,ViewRoomID=ViewID).Name) &"</h3>
+	</div>
+	<div class='desc-regular'>
+		<p>" & DescriptionRoom & "</p>
+	</div>
+	<div class='desc-italic'>
+		<p>" &  Text(SizeSqmRoom * 10.7639, "[$-en-US]#") & " Sqf"   & ", " &  Concat(Filter(AddColumns('[dbo].[IT_Room_BedType]',"MyBed",LookUp(RenameColumns(colBedType,"BedTypeID","BedTypeID2"),BedTypeID=BedTypeID2)),IT_RoomID=Room.IT_RoomID), MyBed.Name & " (" & MyBed.SizeFeet & "), ","") 
+& If(BalconyRoom,"balcony, ","") & If(Bath,"bath, ","") & If(Terrace,"terrace, ","") & If(ConnectingRoom,"connecting room, ","") & If(TwinBedRoom,"twin bed, ","") & If(WalkinShower,"walkin shower, ","") & If(Shower,"shower, ","") & FacilitiesRoom & "</p>"
+& "</div>","
+") &
+With({
+    FirstRoom:First(ShowColumns(MyRoomList,"Picture1Room","Picture2Room")),
+    SecondRoom:Last(FirstN(ShowColumns(MyRoomList,"Picture1Room"),2))},
+With({
+    Pic1Room1:FirstRoom.Picture1Room,
+    Pic2Room1:FirstRoom.Picture2Room,
+    Pic1Room2:SecondRoom.Picture1Room},
+
+If(CountRows(MyRoomList)>1 And Pic1Room1<>Pic1Room2,
+"<div class='img1-container'>
+        <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Pic1Room1=SharepointID,Base64) & ");'></div>
+        <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Pic1Room2=SharepointID,Base64) & ");'></div>
+</div>",
+"<div class='img1-container'>
+        <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Pic1Room1=SharepointID,Base64) & ");'></div>
+        <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Pic2Room1=SharepointID,Base64) & ");'></div>
+</div>")
+))) & "</div>"
+,
+                           // Accommodation Buyout
+"
+<div class='desc' id='" & "acc" & IT_AccommodationID & "'>
+	<div class='desc-title color-accommodation'>
+		<h2>"& TitleVilla & "</h2>
+	</div>
+	<span class='line'></span>
+	<div class='desc-subtitle'>
+		<h3>"& DateDiff(DateFrom,DateTo,Days) & " nights in "& LookUp(RenameColumns(colLocation,"Location_ID","Location_ID2"),Location_ID=Location_ID2).Name &"</h3>
+	</div>
+	
+	<div class='desc-regular'>
+	    <p>" & Description1 & "</p>
+	
+	</div>
+	<div class='desc-italic'>
+            <p>"& If(IsBlank(NoteDistances),"","
+            <p>Distances: " & NoteDistances) & If(IsBlank(Notes),""," / Notes: " & Notes & "") & If(IsBlank(NoteFacilities),"",
+            "Facilities: " & NoteFacilities) & If(IsBlank(AmenityDescription),"","<br>" & AmenityTitle & ": " & AmenityDescription & "") & "</p>
+	</div>	
+	<div class='img1-container'>
+			<div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture1_ID=SharepointID,Base64) & ");'></div>
+			<div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture2_ID=SharepointID,Base64) & ");'></div>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture3_ID=SharepointID,Base64) & ");'></div>
+	</div>
+	
+	<div class='desc-regular'>
+		<p>"&  Description2  &"</p>
+	</div>
+	<div class='desc-italic'>
+		<p>"&
+            If(IsBlank(NoteTechnical),"", "<p>Technicals: " & NoteTechnical  & "</p>")&
+            If(IsBlank(NoteInclusions),"", "<p>Inclusions: " & NoteInclusions  & "</p>")&
+            If(IsBlank(NoteExclusions),"", "<p>Exclusions: " & NoteExclusions  & "</p>")&
+        "</p>
+	</div>
+
+	<div class='img1-container'>
+			<div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture4_ID=SharepointID,Base64) & ");'></div>
+			<div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture5_ID=SharepointID,Base64) & ");'></div>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture6_ID=SharepointID,Base64) & ");'></div>
+	</div>
+</div>")
+,"<div class='separator'>
+</div>"
+))
+
+&
+
+//------------------------------------------------------------ ITINERARY x day (Group Events) ------------------------------------------------------------
+If(!IsEmpty(GroupEvents),
+"<div class='separator' id='itinerary'>
+</div>
+<div class='separator'>
+		<svg id='icon-itinerary'
+				xmlns='http://www.w3.org/2000/svg'
+				width='10rem'
+				height='10rem'
+				viewBox='0 0 1024 1023'>
+				<path d='M901 576q-99 99-227.5 122T449 659L278 830l88 88q18 18 18 43.5t-18 43.5t-43.5 18t-43.5-18L18 745Q0 727 0 701.5T18 658t43.5-18t43.5 18l88 88l171-171q-61-96-38.5-224.5T447 123Q551 20 687 0q59 58 115 114t120 120.5T1024 337q-20 136-123 239zM674 68q-95 23-169 97q-47 47-74 104t-31 115h545q8-22 11-34z'/>
+		</svg>
+</div>
+
+<div class='separator'>
+</div>" &
+
+Concat(GroupEvents,
+
+"<div class='desc' id='it" & IT_GroupEventID &"'>
+	<div class='desc-title color-itinerary'>
+		<h2>" & Title & "</h2>
+	</div>
+	<span class='line'></span>
+	<div class='desc-subtitle'>
+		<h3>" & Text(DateOfService,"[$-en-US]dddd") & "</h3>
+	</div>
+	
+	<div class='desc-italic'>
+        <p>"& If(IsBlank(A_MeetingPoint),"", "Meeting Point: " & A_MeetingPoint & ", ") & If(IsBlank(A_MeetingTime),"", "Time: "  & Left(A_MeetingTime,2) & ":" & Mid(A_MeetingTime,4,2)) & If(IsBlank(Duration),"", ", Duration: " & Duration) & "</p>
+	</div>
+	<div class='desc-regular'>
+		<p>" & Description & "</p>
+	</div>
+    <div class='desc-italic'>"& 
+    If(IsBlank(Notes),"","<p>Notes: " & Notes & "</p>") &
+    If(IsLongDescription,"",
+		If(IsBlank(Inclusions),"","<p>Inclusions: " & Inclusions & "</p>")&
+        If(IsBlank(Exclusions),"","<p>Exclusions: " & Exclusions  & "</p>")) & 
+    "</div>"&
+	
+	"<div class='img1-container'>
+        <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture2_ID=SharepointID,Base64) & ");'></div>
+		<div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture3_ID=SharepointID,Base64) & ");'></div>
+	</div>" &
+
+    If(!IsLongDescription,"",
+        "<div class='desc-regular'>
+            <p>" & Description2 &"</p>
+	    </div>
+        <div class='desc-italic'>"&
+        If(IsBlank(Inclusions),"","<p>Inclusions: " & Inclusions & "</p>")&
+        If(IsBlank(Exclusions),"","<p>Exclusions: " & Exclusions  & "</p>") &
+        "</div>
+        <div class='img1-container'>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture4_ID=SharepointID,Base64) & ");'></div>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture5_ID=SharepointID,Base64) & ");'></div>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture6_ID=SharepointID,Base64) & ");'></div>
+	    </div>") &
+"</div>","<div class='separator'>
+</div>")) &
+
+
+//------------------------------------------------------------ TRANSFERS ------------------------------------------------------------
+With({MyVehicles:Filter(Distinct(ItineraryEvents,VehicleID),!IsBlank(Result) And Result<>9)},
+    If(!IsEmpty(CarRentals) Or !IsEmpty(MyVehicles),
+
+"<div class='separator' id='transfer'>
+</div>
+
+<div class='separator'>
+		<svg id='icon-transfer'
+				xmlns='http://www.w3.org/2000/svg'
+				width='10rem'
+				height='10rem'
+				viewBox='0 0 24 20'>
+				<path d='M20.772 10.155l-1.368-4.104A2.995 2.995 0 0 0 16.559 4H7.441a2.995 2.995 0 0 0-2.845 2.051l-1.368 4.104A2 2 0 0 0 2 12v5c0 .738.404 1.376 1 1.723V21a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2h12v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2.277A1.99 1.99 0 0 0 22 17v-5a2 2 0 0 0-1.228-1.845zM7.441 6h9.117c.431 0 .813.274.949.684L18.613 10H5.387l1.105-3.316A1 1 0 0 1 7.441 6zM5.5 16a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 5.5 16zm13 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 18.5 16z'/>
+		</svg>
+</div>") &
+
+//------------------------------------------------------------ Car & driver / Speedboat & skipper ------------------------------------------------------------
+If(!IsEmpty(MyVehicles),
+"<div class='separator'>
+</div>
+    <div class='desc'>
+        <div class='desc-title color-transfer'>
+            <h2>"& Itinerary.TransferTitle &"</h2>
+        </div>
+        <span class='line'></span>
+        <div class='desc-regular'>
+                <p>"& Itinerary.TransferDescription &"</p>
+        </div>
+        <div class='desc-italic'>
+        <p>"& Itinerary.TransferNote &"</p>
+        </div>
+    " &
+    Concat(MyVehicles,
+    "<div class='transfer-container'>
+		<div class='transfer-box1'>
+			<div class='desc-subtitle'>
+				<h3>" & LookUp(colVehicle,Result=VehicleID).Name & "</h3>
+			</div>
+            <div class='desc-regular'>
+			<p>" & 
+    Concat(Filter(ItineraryEvents,Result=VehicleID),
+    LookUp(colLocation,A_LocationID_Event=Location_ID).Name & If(LookUp(colLocation,B_LocationID_Event=Location_ID).Name="-",""," - " & LookUp(colLocation,B_LocationID_Event=Location_ID).Name) & If(LookUp(colLocation,C_LocationID_Event=Location_ID).Name="-",""," - " & LookUp(colLocation,C_LocationID_Event=Location_ID).Name),"<br>") 
+    & With({VehiclePictureID:LookUp(colVehicle,Result=VehicleID).PictureID},
+    "</div>
+		</div>
+    <div class='transfer-box2'>
+			<img src=" & LookUp('[dbo].[PictureTable]',VehiclePictureID=SharepointID,Base64) & ">
+		</div>
+	</div>") )& 
+If(IsBlank(Itinerary.TransferNote),"")&"
+</div>")
+
+&
+
+//------------------------------------------------------------ Car rental ------------------------------------------------------------
+If(!IsEmpty(CarRentals),
+If(Itinerary.RentACarShowOnTemplate=false,"",
+
+"<div class='separator'>
+</div>
+    <div class='desc' id='rent1'>
+        <div class='desc-title color-transfer'>
+            <h2>" & Itinerary.RentACarTitle & "</h2>
+        </div>
+        <span class='line'></span>
+        <div class='desc-regular'>
+                <p>" & Itinerary.RentACarDescription & "</p>
+        </div>
+        "& If(IsBlank(Itinerary.RentACarNote),"",
+            "<div class='desc-italic'>
+                <p>"& Itinerary.RentACarNote &"</p>
+            </div>") 
+& Concat(CarRentals,
+With({MyVehicle:LookUp(RenameColumns(colVehicle,"VehicleID","VehicleID2"),VehicleID=VehicleID2)},
+With({VehiclePictureID:MyVehicle.PictureID},
+"<div class='transfer-container'>
+		<div class='transfer-box1'>
+			<div class='desc-subtitle'>
+				<h3>"& MyVehicle.Name  &"</h3>
+			</div>
+            <div class='desc-regular'>
+			<p>Pick up: " & LookUp(colLocation,A_Location_ID=Location_ID).Name & " (" & A_PickUp & " @ " & Left(A_Time,2) &":"& Mid(A_Time,4,2) & ")<br>" &
+"Drop off: " & LookUp(colLocation,C_Location_ID=Location_ID).Name & " (" & C_DropOff & " @ " & Left(C_Time,2) &":"& Mid(C_Time,4,2) & ")<br>* " &
+Concat(Filter(RenameColumns(colvw_Extra_RentACar,"IT_RentACarID","IT_RentACarID2","Name","NameExtra"),IT_RentACarID=IT_RentACarID2),
+"<i>"& NameExtra & "</i>",", "
+)& "</p>
+            </div>
+		</div>
+    <div class='transfer-box2'>
+			<img src=" & LookUp('[dbo].[PictureTable]',VehiclePictureID=SharepointID,Base64) & ">
+		</div>
+	</div>")
+))& "</div>" ))
+)
+&
+//------------------------------------------------------------ ADDITIONAL  ------------------------------------------------------------
+If(!IsEmpty(MyCellphones) Or !IsEmpty(AdditionalDescriptions) Or Itinerary.IsButler,
+"<div class='separator' id='more'>
+</div>
+<div class='separator'>
+		<svg id='icon-more'
+				xmlns='http://www.w3.org/2000/svg'
+				width='10rem'
+				height='10rem'
+				viewBox='0 0 36 36'>
+				<path d='M8.75 14a2.75 2.75 0 1 1-5.5 0a2.75 2.75 0 0 1 5.5 0z'/>
+                <path d='M16.75 14a2.75 2.75 0 1 1-5.5 0a2.75 2.75 0 0 1 5.5 0z'/>
+                <path d='M22 16.75a2.75 2.75 0 1 0 0-5.5a2.75 2.75 0 0 0 0 5.5z'/>
+		</svg>
+</div>")&
+
+//------------------------------------------------------------  Butler ------------------------------------------------------------
+If(Itinerary.IsButler,
+"<div class='separator'>
+</div>
+    <div class='desc'>
+        <div class='desc-title color-more'>
+            <h2>" & Itinerary.ButlerTitle & "</h2>
+        </div>
+        <span class='line'></span>
+        <div class='desc-regular'>
+                <p>" & Itinerary.ButlerDescription & "</p>
+        </div>
+        <div class='desc-italic'>
+            <p>*"& Itinerary.NoteButler &"</p>
+        </div>" &
+Concat(Filter('[dbo].[Butler_Employee]',Itinerary.ItineraryID=ItineraryID),
+With({MyEmployee:LookUp(RenameColumns(colEmployee,"EmployeeID","EmployeeID2"),EmployeeID=EmployeeID2)},
+"       <div class='transfer-container'>
+            <div class='transfer-box1'>
+                <div class='desc-subtitle'>
+                    <h3>" & MyEmployee.FullName &"</h3>
+                </div>
+                <div class='desc-italic'>
+                <p>"& MyEmployee.Description &"</p>
+                </div>
+		    </div>" &
+With({EmployeePictureID:MyEmployee.PictureID},
+"            <div class='transfer-box2' id='butler-img-box'>
+                <img class='butler-img' src=" & LookUp('[dbo].[PictureTable]',EmployeePictureID=SharepointID,Base64) & ">
+            </div>
+	    </div>")),
+        "<div class='desc'>
+            <div class='desc-italic'>
+                <p>or</p>
+            </div>
+        </div>") & 
+"</div>") &
+
+
+//------------------------------------------------------------  Cellphones ------------------------------------------------------------
+If(!IsEmpty(MyCellphones),
+"<div class='separator'>
+</div>
+    <div class='desc'>
+        <div class='desc-title color-more'>
+            <h2>" & Itinerary.CellphoneTitle & "</h2>
+        </div>
+        <span class='line'></span>
+        <div class='desc-regular'>
+                <p>"& Itinerary.CellphoneDescription &"</p>
+        </div>
+        
+                <div class='desc-regular'><p>" &
+Concat(MyCellphones,
+    LookUp(RenameColumns('[dbo].[TravellerGroup]',"TravellerGroupID","TravellerGroupID2"), TravellerGroupID=TravellerGroupID2).AttentionTo & " " 
+& Text(DateAdd(Itinerary.DateArrival,DayUseFrom,Days),"[$-en-US]dd.mm - ") & Text(DateAdd(Itinerary.DateArrival,DayUseTo,Days),"[$-en-US]dd.mm"),"<br>")& "</p></div>" &
+If(IsBlank(Itinerary.CellphoneNote),"","<div class='desc-italic'><p>*"& Itinerary.CellphoneNote &"</p></div>") & "
+</div>"		
+) &
+
+//------------------------------------------------------------ Additional Description  ------------------------------------------------------------
+If(!IsEmpty(AdditionalDescriptions),
+"<div class='separator'>
+</div>
+" &Concat(
+    AdditionalDescriptions,
+    "<div class='desc'>
+        <div class='desc-title color-more'>
+            <h2>" & Title & "</h2>
+        </div>
+        <span class='line'></span>
+        <div class='desc-regular'>
+            <p>"& Description &"</p>
+        </div>" &
+
+        If(IsBlank(NoteFooter),"",
+        "<div class='desc-italic'>
+            <p>*"& NoteFooter & "</p>
+        </div>") & 
+If(!IsBlank(Picture1_ID) And !IsBlank(Picture2_ID) And !IsBlank(Picture3_ID),
+        "<div class='img1-container'>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture1_ID=SharepointID,Base64) & ");'></div>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture2_ID=SharepointID,Base64) & ");'></div>
+            <div class='img1' style='background-image: url(" & LookUp('[dbo].[PictureTable]',Picture3_ID=SharepointID,Base64) & ");'></div>
+        </div>") &
+"</div>","<div class='separator'>
+</div>
+")) & 
+//------------------------------------------------------------ Terms & Money ------------------------------------------------------------
+If(cboxIsContract.Value Or cboxIsPrice.Value,
+"<div class='separator' id='money'>
+</div>
+<div class='separator'>
+		<svg id='icon-terms'
+				xmlns='http://www.w3.org/2000/svg'
+				width='10rem'
+				height='10rem'
+				viewBox='0 0 640 512'>
+				<path d='M621.16 54.46C582.37 38.19 543.55 32 504.75 32c-123.17-.01-246.33 62.34-369.5 62.34c-30.89 0-61.76-3.92-92.65-13.72c-3.47-1.1-6.95-1.62-10.35-1.62C15.04 79 0 92.32 0 110.81v317.26c0 12.63 7.23 24.6 18.84 29.46C57.63 473.81 96.45 480 135.25 480c123.17 0 246.34-62.35 369.51-62.35c30.89 0 61.76 3.92 92.65 13.72c3.47 1.1 6.95 1.62 10.35 1.62c17.21 0 32.25-13.32 32.25-31.81V83.93c-.01-12.64-7.24-24.6-18.85-29.47zM48 132.22c20.12 5.04 41.12 7.57 62.72 8.93C104.84 170.54 79 192.69 48 192.69v-60.47zm0 285v-47.78c34.37 0 62.18 27.27 63.71 61.4c-22.53-1.81-43.59-6.31-63.71-13.62zM320 352c-44.19 0-80-42.99-80-96c0-53.02 35.82-96 80-96s80 42.98 80 96c0 53.03-35.83 96-80 96zm272 27.78c-17.52-4.39-35.71-6.85-54.32-8.44c5.87-26.08 27.5-45.88 54.32-49.28v57.72zm0-236.11c-30.89-3.91-54.86-29.7-55.81-61.55c19.54 2.17 38.09 6.23 55.81 12.66v48.89z'/>
+		</svg>
+</div>
+<div class='separator'>
+</div>
+
+<div class='desc'>
+        <div class='desc-title color-money'>
+            <h2>" & If(toggleNetGross.Value,"","Net ") & If(cboxIsPrice.Value,Text(If(toggleNetGross.Value,Value(totGross.Text),
+            If(Itinerary.IsEuros,Value(totNetHr.Text),Value(totNetUs.Text))),"[$-en-US]#,###.00") & If(Itinerary.IsEuros," EUR"," USD"),"Terms & conditions") & "</h2>
+        </div>
+        <span class='line'></span>
+        "&If(cboxIsContract.Value,
+            "<div class='desc-terms'>
+                "& Itinerary.TermsAndConditions &"
+            </div>")&"
+</div>")
+
+&
+
+//------------------------------------------------------------ Footer ------------------------------------------------------------
+"<div class='separator'>
+</div>
+
+<div id='footer'>
+	<div id='footer-container'>
+		<div class='footer-item'>
+			<p style='font-size: 1.6rem;'>"&If(cboxIsLeonidas.Value,"<b>LEONIDAS TRAVEL</b>","")&"</p>
+		</div>
+
+        <div class='footer-item'>
+			<p>"& If(cboxIsTravelAgent.Value,"in cooperation with</p>
+			<p style='font-size: 1.6rem;'><b>"& MyBR.ClientName & " - " & MyBR.ClientAgencyNickname,"") &"</b></p>
+		</div>
+
+        <div class='footer-item'>
+			<p>"& Itinerary.BookingReferenceID & "-v" & Itinerary.Version &"</b> / "& MyBR.StatusName & "</p>
+			<p>page created on "& Text(Now(),"[$-en-US]mmm dd yyyy @ hh:mm") &" (+1 UTC)</p>
+            <br>
+            <p>"&If(IsBlank(HtmlExpireInDays.Text),"no expiration date for this page","page expires on: "& Text(DateAdd(Now(),Value(HtmlExpireInDays.Text),Days),"[$-en-US]mmm dd yyyy @ ") & "23:30")&"</p>
+		</div>
+		        
+	</div>
+</div>
+
+" &
+//------------------------------------------------------------ Back button ------------------------------------------------------------
+"<a href='#home-background'>
+	<div id='back'>
+		<div class='button'>
+			<div class='icon'>
+				<svg class='menu-icon'
+				xmlns='http://www.w3.org/2000/svg'
+				width='6rem'
+				height='6rem'
+				viewBox='0 0 24 24'>
+				<path d='M12 6.879l-7.061 7.06l2.122 2.122L12 11.121l4.939 4.94l2.122-2.122z'/>
+				</svg>
+			</div>
+		</div>
+	</div>	
+</a>
+</body>"
+)

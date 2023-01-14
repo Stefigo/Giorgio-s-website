@@ -1,0 +1,358 @@
+@media print {
+  
+body {
+    width: 200%;
+    height: 200%;
+    margin: -50% -50%;
+  }
+.pagebreak {page-break-before: always; }
+details {break-inside: avoid;}
+summary {page-break-inside: avoid;}
+
+#popup-cookies{display: none;}
+#menu{display:none;}
+#menu-tool{visibility:hidden;}
+
+#home-background{
+	padding-top:58rem;
+	width:100%;
+	display: grid;
+}
+	#home-grid{
+		max-width: 100%;
+		width: 100rem;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 6.5rem 35rem 85rem 5rem;
+		margin-bottom: 0rem;
+	}
+		#header{grid-area: 1 / 1 / 2 / 3;}
+
+		#title-box{
+			grid-area: 2 / 1 / 3 / 3;
+			padding-left: 0rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+			#title{
+				text-align: center;
+				width: 80%;
+			}
+		#map-box{
+			grid-area: 3 / 1 / 4 / 3;
+			padding: 2rem;
+			transform: translateY(-2.5rem);
+			}
+		#info-box1{grid-area: 4 / 1 / 5 / 2;}
+		#info-box2{grid-area: 4 / 2 / 5 / 3;}
+
+.itinerary{
+	width: 100rem;
+}
+
+details[open] {
+	position: relative;
+	padding-bottom: 3rem;
+}
+
+.details-card{
+	padding-top: 0rem;
+	margin-top: 0rem;
+}
+
+summary{
+	width: 100%;
+	max-width: 100rem;
+	cursor: pointer;
+	outline: none;
+	padding: 0 0rem;
+}
+.summary-card{
+	width:100%;
+	display: block;
+	position: relative;
+}
+
+.card-box1{
+	display:block;
+}
+
+.card-notes{
+	display: flex;
+}
+
+	.card-nights{
+		transform: translateX(0rem) translateY(-2rem);
+	}
+		
+	.card-location{
+		position: absolute;
+		left: 27rem;
+		margin-left: 0rem;
+	}
+		
+	.card-img{
+		position: absolute;
+		transform: translateX(0rem) translateY(-2rem);
+		left: -1rem;
+		min-width: 25rem;
+		max-width: 25rem;
+		height: 16.666rem;
+	}
+
+.card-box2{
+	transform: translateY(1rem);
+	background-color: none;
+	box-shadow: none;
+	border-radius: none;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	left: 27rem;
+	top: 3rem;
+	padding-left: 0rem;
+	padding-right: 0rem;
+}
+
+	.card-post-info{
+		width: 100%;
+	}
+		.card-title{
+			text-transform: uppercase;
+			margin-top: 0.5rem;
+		}
+		.card-text{display:none;}
+		.icon-arrow{display:none;}
+
+		
+#accommodation .desc-container{
+	padding-top: 17rem;
+}
+.desc-container{
+	display: flex;
+	justify-content: center;
+}
+.desc{width:100rem;}
+.desc-hotel{
+	width:100%;
+	display: grid;
+	grid-template-columns: 12% 88%;
+}
+.desc-hotel h4{
+	grid-column: 1 / 2;
+	text-align: left;
+}
+.desc-regular{
+	grid-column: 2 / 3;
+}
+.desc-regular p{
+	text-align: left;
+}
+	.span-subtitle{ 
+		background: none; 
+		padding: 0 0px; 
+	}
+	h4.background-line{
+		position: relative;
+		z-index: 1;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		margin-left: 0rem;
+		margin-right: 0rem;
+	}
+	h4.background-line:before{
+		display:none;
+	}
+
+.card-room{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 3rem;
+	margin-bottom: 0rem;
+	position: relative;
+	width: 100%;
+}
+
+	.card-room-text{
+		width: 87.5%;
+		border: solid 0.01rem rgba(134,39,130,1);
+		display: block;
+		min-height: 20rem;
+		padding: 1rem;
+		padding-right: 4rem;
+		padding-left: 2rem;
+	}
+	.room-box1{
+		padding: 0rem;
+		width: 85%;
+	}	
+		.room-name{
+			text-align: left;
+			display: flex;
+		}
+			.span-room-title{
+			}
+			.span-view{
+				padding-left: 1.5rem;
+				text-transform: lowercase;
+			}
+		.room-details{
+			text-align: left;
+			padding-top: 1.5rem;
+		}
+	.room-box2{
+		display: block;
+		padding: 0rem;
+		width:85%;
+		padding-top: 1.5rem;
+	}
+		.room-description{
+			text-align: left;
+		}
+
+.card-room-img-div{
+		width: 25rem;
+		background-color: none;
+		right: 0rem;
+		transform: translateY(0rem);
+		display: flex;
+		align-items: center;
+		margin-left: 3rem;
+		justify-content: space-evenly;
+		margin-left: 0;
+		position: absolute;
+	}
+
+	.card-room-img{
+		max-width: 25rem;
+		height: 16.666rem;
+		left:0;
+	}
+	.card-room-img-top{
+		display: none;
+	}
+
+	.title-yacht{
+		display:none;
+	}
+
+	.activity-pictures2{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-top: 2rem;
+	}
+	.activity-inclusions-box{
+		max-width: 100%;
+		min-width: 100%;
+		height: auto;
+		padding: 0rem;
+		padding-bottom: 2rem;
+		border: none;	
+	}
+	.yacht-inclusions-box{
+		max-width: 30rem;
+		min-width: 30rem;
+		height: 20rem;
+	}
+	.yacht-images2{
+		width: 65%;
+	}
+	.activity-print-card{
+		display: block;
+		padding-left: 7rem;
+		transform: translateY(-1rem);
+	}
+	#activity .card-img{display:none;}
+	#activity .card-box2{display:none;}
+	#activity .card-location{display:none;}
+
+	.activity-img-print{
+		display:block;
+	}
+	.activity-img{
+		max-width: 30rem;
+		min-width: 30rem;
+		height: 20rem;
+	}
+	.section-separator{
+		padding-top: 0rem;
+		padding-bottom: 3rem;
+	}
+
+	.activity-images{
+		width: 100%;
+	}
+
+	.title-activity{
+		text-align: left;
+		margin-top: 1rem;
+		font-size: 3.316rem;
+		width: 100%;
+	}
+
+	.activity-details{
+		border-top: none;
+		margin-top: 1rem;
+		margin-bottom: 2rem;
+		padding-top: 1.5rem;
+		font-size: 1.4rem;
+		font-weight: 300;
+		line-height: 1.5rem;
+	}
+
+
+	.shortcard{
+		box-shadow: none;
+	}
+
+	
+	.footer-btn-box{
+		box-shadow: none;
+		text-decoration: none;
+	}
+	.emergency-container{
+		box-shadow: none;
+	}
+	.summary-acc-name a{
+		color: rgba(218,165,32,1);
+	}
+	#footer-background{
+		margin-top: 3rem;
+	}
+
+	.vehicle::before {
+		display: none;
+	}
+	
+	.vehicle-box1{
+		width: 50%;
+	}
+	.vehicle-box2{
+		width: 50%;
+	}
+	.vehicle-img{
+		max-width: 30rem;
+		min-width: 30rem;
+		height:auto;
+		padding: 0rem;
+	}
+	#logos{
+		margin:0rem;
+	}
+
+	/*.butler-box2{
+		width: 30rem;
+	}
+
+	#email-button{
+		display:none;
+	}
+	#footer-end{
+		padding: 0rem;
+		border-top: none;
+	}
+	*/
+}
